@@ -55,7 +55,7 @@ const ViewPage = () => {
     }
     try {
       const resLocation = await axios.get<{ country: string; name: string }[]>(
-        `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=1&appid=${API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=1&appid=${API_KEY}`
       );
       const resWeather = await axios.get<WeatherData>(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}` //&exclude={part}
