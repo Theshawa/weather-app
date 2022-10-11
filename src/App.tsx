@@ -1,5 +1,13 @@
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import axios from "axios";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { DATA_SOURCE } from "./api.config";
 import HomePage from "./components/pages/Home";
 import ViewPage from "./components/pages/View";
 
@@ -13,10 +21,38 @@ export const LoadingContext = createContext<{
   setError: () => {},
 });
 
+export interface DATA {
+  [key: string]: {
+    code: string;
+    name: string;
+    cities: { lat: number; lng: number; name: string }[];
+  };
+}
+
+export const DataContext = createContext<DATA>({});
+
 function App() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
+  const [data, setData] = useState<DATA>({});
+
+  const getData = async () => {
+    setLoading(true);
+    setMessage("Loading...");
+    try {
+      const res = await axios.get<DATA>(DATA_SOURCE);
+      setData(res.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -37,10 +73,12 @@ function App() {
           }}
           className="bg-white bg-opacity-[0.09] backdrop-blur-[50px] relative scrollbar overflow-auto px-[23px] md:px-[63px] py-[45px] w-full h-full"
         >
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="view" element={<ViewPage />} />
-          </Routes>
+          <DataContext.Provider value={data}>
+            <Routes>
+              <Route index element={<HomePage />} />
+              <Route path="view" element={<ViewPage />} />
+            </Routes>
+          </DataContext.Provider>
         </div>
         {loading ? (
           <div className="w-full h-full bg-white bg-opacity-10 absolute z-50 top-0 left-0 backdrop-blur-[50px] flex flex-col items-center justify-center">
@@ -63,10 +101,11 @@ function App() {
                 navigate("/", { replace: true });
                 setError(false);
                 setLoading(false);
+                getData();
               }}
               className="mt-[40px] underline"
             >
-              Refresh Page
+              Try Again
             </button>
           </div>
         ) : (

@@ -1,18 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { LoadingContext } from "../../App";
+import { DataContext, LoadingContext } from "../../App";
 import axios from "axios";
 import { API_KEY } from "../../api.config";
-import data from "../../data.json";
 import { TimeIcon, WeatherIcon } from "../Icons";
-
-const DATA: {
-  [key: string]: {
-    code: string;
-    name: string;
-    cities: { lat: number; lng: number; name: string }[];
-  };
-} = data as any;
 
 interface LocationData {
   country: string;
@@ -48,6 +39,7 @@ const ViewPage = () => {
     weather: WeatherData;
   }>();
   const { setError, setLoading, setMessage } = useContext(LoadingContext);
+  const DATA = useContext(DataContext);
 
   const lat = query.get("lat");
   const lng = query.get("lng");

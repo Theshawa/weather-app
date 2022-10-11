@@ -1,19 +1,12 @@
 import { useContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoadingContext } from "../../App";
-import data from "../../data.json";
-
-const DATA: {
-  [key: string]: {
-    code: string;
-    name: string;
-    cities: { lat: number; lng: number; name: string }[];
-  };
-} = data as any;
+import { DataContext, LoadingContext } from "../../App";
 
 const HomePage = () => {
   const [countryCode, setCountryCode] = useState<string>("");
   const [coordinates, setCoordinates] = useState<string>("");
+
+  const DATA = useContext(DataContext);
 
   const navigate = useNavigate();
   const { setLoading, setError, setMessage } = useContext(LoadingContext);
@@ -22,7 +15,7 @@ const HomePage = () => {
     if (!countryCode) return [];
 
     return DATA[countryCode].cities;
-  }, [countryCode]);
+  }, [countryCode, DATA]);
 
   const moveToView = async () => {
     console.log(coordinates);
