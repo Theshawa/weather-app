@@ -75,7 +75,7 @@ const ViewPage = () => {
       setLoading(false);
       setError(true);
     }
-  }, [lat, lng, setError, setLoading, setMessage]);
+  }, [lat, lng, setError, setLoading, setMessage, DATA]);
 
   useEffect(() => {
     getData();
