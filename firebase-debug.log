@@ -93,3 +93,56 @@
     at processTimers (node:internal/timers:502:7)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2022-10-11T17:55:14.397Z] ----------------------------------------------------------------------
+[debug] [2022-10-11T17:55:14.400Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mrclo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-10-11T17:55:14.401Z] CLI Version:   11.7.0
+[debug] [2022-10-11T17:55:14.401Z] Platform:      win32
+[debug] [2022-10-11T17:55:14.401Z] Node Version:  v16.14.0
+[debug] [2022-10-11T17:55:14.404Z] Time:          Tue Oct 11 2022 23:25:14 GMT+0530 (India Standard Time)
+[debug] [2022-10-11T17:55:14.405Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-11T17:55:14.468Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-11T17:55:14.469Z] > authorizing via signed-in user (mrclocktd@gmail.com)
+[debug] [2022-10-11T17:55:14.469Z] [iam] checking project weather-app-theshawa for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-10-11T17:55:14.471Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-theshawa:testIamPermissions [none]
+[debug] [2022-10-11T17:55:14.471Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-theshawa:testIamPermissions x-goog-quota-user=projects/weather-app-theshawa
+[debug] [2022-10-11T17:55:14.472Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-theshawa:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-11T17:55:19.290Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-theshawa:testIamPermissions 200
+[debug] [2022-10-11T17:55:19.290Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-theshawa:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-11T17:55:19.291Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-theshawa [none]
+[debug] [2022-10-11T17:55:21.459Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-theshawa 200
+[debug] [2022-10-11T17:55:21.460Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-theshawa {"projectId":"weather-app-theshawa","projectNumber":"46886601135","displayName":"Weather App Theshawa","name":"projects/weather-app-theshawa","resources":{"hostingSite":"weather-app-theshawa"},"state":"ACTIVE","etag":"1_7efe5212-081f-42c8-adb6-ea1bcbbfe9b2"}
+[info] 
+[info] === Deploying to 'weather-app-theshawa'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-10-11T17:55:21.462Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-theshawa [none]
+[debug] [2022-10-11T17:55:22.340Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-theshawa 200
+[debug] [2022-10-11T17:55:22.340Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-theshawa {"projectId":"weather-app-theshawa","projectNumber":"46886601135","displayName":"Weather App Theshawa","name":"projects/weather-app-theshawa","resources":{"hostingSite":"weather-app-theshawa"},"state":"ACTIVE","etag":"1_7efe5212-081f-42c8-adb6-ea1bcbbfe9b2"}
+[debug] [2022-10-11T17:55:22.341Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions [none]
+[debug] [2022-10-11T17:55:22.341Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-10-11T17:55:26.860Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions 200
+[debug] [2022-10-11T17:55:26.860Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions {"name":"projects/46886601135/sites/weather-app-theshawa/versions/20a56e7938ae5dde","status":"CREATED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[weather-app-theshawa]: beginning deploy... 
+[info] i  hosting[weather-app-theshawa]: found 7 files in build 
+[debug] [2022-10-11T17:55:26.867Z] [hosting] uploading with 200 concurrency
+[debug] [2022-10-11T17:55:26.986Z] [hosting] hash cache [YnVpbGQ] stored for 7 files
+[debug] [2022-10-11T17:55:26.986Z] [hosting][hash queue][FINAL] {"max":113,"min":6,"avg":22.857142857142858,"active":0,"complete":7,"success":7,"errored":0,"retried":0,"total":7,"elapsed":117}
+[debug] [2022-10-11T17:55:26.986Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions/20a56e7938ae5dde:populateFiles [none]
+[debug] [2022-10-11T17:55:26.986Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions/20a56e7938ae5dde:populateFiles {"files":{"/asset-manifest.json":"972e2a7288be4706d0e5f81ae1bcdd2b212eaef837c751c343c73a97fcfedb78","/index.html":"d20d9198d6d40bb4f8de0803710a52dc0e70c8ccee55e69fe18636756d69cabc","/static/css/main.75edb247.css":"f7c07db71733b93392796c9e7d0533e1a12e2309c3747e916b4773a47184cd85","/static/css/main.75edb247.css.map":"43b8e9a8a5190a086ce87067f16246c3f759b2eb668eae25a07a827706d6e600","/static/js/main.f0f575fc.js.LICENSE.txt":"6c0fa222ff3caa5bf8b1fd7f361b824dfabcfab73bdcb139c2b84570fc668170","/static/js/main.f0f575fc.js":"0e2dd2e8b74b5d0aa293dbe08de415ec97266da0003be73ab488133d8a14405b","/static/js/main.f0f575fc.js.map":"0136acadb0ed63f70e89e8b1f63fc7fa54dfe1678d85f13a70e6aef00b3cc2fa"}}
+[debug] [2022-10-11T17:55:29.794Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions/20a56e7938ae5dde:populateFiles 200
+[debug] [2022-10-11T17:55:29.794Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/46886601135/sites/weather-app-theshawa/versions/20a56e7938ae5dde:populateFiles {"uploadRequiredHashes":["972e2a7288be4706d0e5f81ae1bcdd2b212eaef837c751c343c73a97fcfedb78","d20d9198d6d40bb4f8de0803710a52dc0e70c8ccee55e69fe18636756d69cabc","0e2dd2e8b74b5d0aa293dbe08de415ec97266da0003be73ab488133d8a14405b","0136acadb0ed63f70e89e8b1f63fc7fa54dfe1678d85f13a70e6aef00b3cc2fa"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files"}
+[debug] [2022-10-11T17:55:29.795Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/972e2a7288be4706d0e5f81ae1bcdd2b212eaef837c751c343c73a97fcfedb78 [none]
+[debug] [2022-10-11T17:55:29.795Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/972e2a7288be4706d0e5f81ae1bcdd2b212eaef837c751c343c73a97fcfedb78 [stream]
+[debug] [2022-10-11T17:55:29.796Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/d20d9198d6d40bb4f8de0803710a52dc0e70c8ccee55e69fe18636756d69cabc [none]
+[debug] [2022-10-11T17:55:29.796Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/d20d9198d6d40bb4f8de0803710a52dc0e70c8ccee55e69fe18636756d69cabc [stream]
+[debug] [2022-10-11T17:55:29.796Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/0e2dd2e8b74b5d0aa293dbe08de415ec97266da0003be73ab488133d8a14405b [none]
+[debug] [2022-10-11T17:55:29.796Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/0e2dd2e8b74b5d0aa293dbe08de415ec97266da0003be73ab488133d8a14405b [stream]
+[debug] [2022-10-11T17:55:29.797Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/0136acadb0ed63f70e89e8b1f63fc7fa54dfe1678d85f13a70e6aef00b3cc2fa [none]
+[debug] [2022-10-11T17:55:29.797Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/0136acadb0ed63f70e89e8b1f63fc7fa54dfe1678d85f13a70e6aef00b3cc2fa [stream]
+[debug] [2022-10-11T17:55:29.797Z] [hosting][populate queue][FINAL] {"max":2810,"min":2810,"avg":2810,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2812}
+[debug] [2022-10-11T17:55:29.797Z] [hosting] uploads queued: 4
+[debug] [2022-10-11T17:55:34.242Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/972e2a7288be4706d0e5f81ae1bcdd2b212eaef837c751c343c73a97fcfedb78 200
+[debug] [2022-10-11T17:55:34.243Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/972e2a7288be4706d0e5f81ae1bcdd2b212eaef837c751c343c73a97fcfedb78 [stream]
+[debug] [2022-10-11T17:55:35.695Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/d20d9198d6d40bb4f8de0803710a52dc0e70c8ccee55e69fe18636756d69cabc 200
+[debug] [2022-10-11T17:55:35.696Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/weather-app-theshawa/versions/20a56e7938ae5dde/files/d20d9198d6d40bb4f8de0803710a52dc0e70c8ccee55e69fe18636756d69cabc [stream]
