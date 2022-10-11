@@ -82,7 +82,7 @@ const ViewPage = () => {
   }, [getData]);
 
   if (!data) {
-    return <></>;
+    return <p className="p-[20px]">Wait, loading...</p>;
   }
 
   return (
