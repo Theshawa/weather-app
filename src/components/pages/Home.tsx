@@ -18,7 +18,6 @@ const HomePage = () => {
   }, [countryCode, DATA]);
 
   const moveToView = async () => {
-    console.log(coordinates);
     let finalCoordinates = coordinates.split(",");
     if (finalCoordinates && finalCoordinates.length === 2) {
       navigate(`/view?lat=${finalCoordinates[0]}&lng=${finalCoordinates[1]}`);

@@ -71,7 +71,6 @@ const ViewPage = () => {
         },
       });
       setLoading(false);
-      console.log(resWeather.data);
     } catch (error) {
       setLoading(false);
       setError(true);
