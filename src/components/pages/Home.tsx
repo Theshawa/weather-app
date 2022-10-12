@@ -95,22 +95,21 @@ const HomePage = () => {
               </option>
             ))}
         </select>
-
-        <button
-          onClick={selectCurrentLocation}
-          className="button-link w-max max-w-full mt-[41px]"
-        >
-          Get weather around you
-        </button>
       </div>
 
-      <div className="flex justify-between flex-col md:flex-row mt-[40px]">
+      <div className="flex justify-between items-center flex-col md:flex-row mt-[40px] pb-[20px] md:pb-0">
         <button
           onClick={moveToView}
           disabled={!countryCode || !coordinates}
           className="button-primary md:mt-0 mt-[41px]"
         >
           View Weather
+        </button>
+        <button
+          onClick={selectCurrentLocation}
+          className="button-link w-max max-w-full md:mt-0 mt-[40px]"
+        >
+          Get weather around you
         </button>
       </div>
     </div>
