@@ -102,10 +102,16 @@ const ViewPage = () => {
           <span className="text-[32px]">
             {(data.weather.main.temp - 273).toFixed(2)} <sup>o</sup>C
           </span>
-          <span className="text-[14px] text-white text-opacity-60">
-            {(data.weather.main.temp_min - 273).toFixed(2)} -{" "}
-            {(data.weather.main.temp_max - 273).toFixed(2)} <sup>o</sup>C
-          </span>
+          {(data.weather.main.temp_min - 273).toFixed(2) ===
+          (data.weather.main.temp_max - 273).toFixed(2) ? (
+            ""
+          ) : (
+            <span className="text-[14px] text-white text-opacity-60">
+              {(data.weather.main.temp_min - 273).toFixed(2)} -{" "}
+              {(data.weather.main.temp_max - 273).toFixed(2)} <sup>o</sup>C
+            </span>
+          )}
+
           <p className="mt-[20px] font-medium text-[18px] capitalize">
             {data.weather.weather[0].description}
           </p>

@@ -8,17 +8,22 @@ import {
 } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { DATA_SOURCE } from "./api.config";
+import ErrorScreen from "./components/ErrorScreen";
+import LoadingScreen from "./components/LoadingScreen";
 import HomePage from "./components/pages/Home";
 import ViewPage from "./components/pages/View";
+import TradeMark from "./components/TradeMark";
 
 export const LoadingContext = createContext<{
   setLoading: Dispatch<SetStateAction<boolean>>;
   setMessage: Dispatch<SetStateAction<string>>;
   setError: Dispatch<SetStateAction<boolean>>;
+  getData: () => void;
 }>({
   setLoading: () => {},
   setMessage: () => {},
   setError: () => {},
+  getData() {},
 });
 
 export interface DATA {
@@ -51,8 +56,10 @@ function App() {
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    if (!Object.keys(data).length) {
+      getData();
+    }
+  }, [data]);
 
   const navigate = useNavigate();
 
@@ -62,6 +69,7 @@ function App() {
         setLoading,
         setMessage,
         setError,
+        getData,
       }}
     >
       <div className="w-[96vw] max-w-[656px] mx-auto mt-[7vh] h-[86vh] rounded-[10px] overflow-hidden relative">
@@ -80,47 +88,23 @@ function App() {
             </Routes>
           </DataContext.Provider>
         </div>
-        {loading ? (
-          <div className="w-full h-full bg-white bg-opacity-10 absolute z-50 top-0 left-0 backdrop-blur-[50px] flex flex-col items-center justify-center">
-            <div className="w-[35px] h-[35px] border-[4px] animate-spin border-t-[#ffffff11] border-l-[#ffffff11] border-r-white border-b-white rounded-full"></div>
-            <p className="mt-[30px] text-white text-opacity-60 text-[16px] text-center">
-              {message || ""}
-            </p>
-          </div>
-        ) : (
-          ""
-        )}
+        {loading ? <LoadingScreen message={message} /> : ""}
         {error ? (
-          <div className="w-full h-full bg-[#f00] bg-opacity-10 absolute z-50 top-0 left-0 backdrop-blur-[50px] flex flex-col items-center justify-center">
-            <h1>😭 Oops!!!</h1>
-            <p className="mt-[30px] text-white text-opacity-60 text-[16px] text-center">
-              Error occured while loading!!!
-            </p>
-            <button
-              onClick={() => {
-                navigate("/", { replace: true });
-                setError(false);
-                setLoading(false);
+          <ErrorScreen
+            retry={() => {
+              navigate("/", { replace: true });
+              setError(false);
+              setLoading(false);
+              if (!Object.keys(data).length) {
                 getData();
-              }}
-              className="mt-[40px] underline"
-            >
-              Try Again
-            </button>
-          </div>
+              }
+            }}
+          />
         ) : (
           ""
         )}
+        <TradeMark />
       </div>
-      <p className="fixed right-0 bottom-0 p-[20px] text-[15px] text-white text-opacity-30">
-        Developed by{" "}
-        <a
-          href="https://theshawa-dev.web.app"
-          className="font-medium hover:underline"
-        >
-          Theshawa Dasun
-        </a>
-      </p>
     </LoadingContext.Provider>
   );
 }
